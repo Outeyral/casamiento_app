@@ -5,6 +5,7 @@ import sqlite3
 from werkzeug.utils import secure_filename
 from PIL import Image
 import io
+import os
 import random
 
 app = Flask(__name__)
@@ -107,4 +108,5 @@ def inicio():
     return render_template("inicio.html", fotos=fotos)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
+
